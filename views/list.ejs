@@ -1,49 +1,57 @@
-<%- include("header")-%>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/style.css">
-        <title>TO Do List</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
 
-    <body>
-        <form action="enter" method="post">
-            <center>
-                <h3 class="cls">MY TO DO LIST</h3>
-                <div class="container2">
-                    <input class="txt" type="text" name="work" placeholder="Enter here..." required>
-                    <center><button class="btn">Add</button></center>
-                </div>
-                <table border="1">
+<body>
+    <form id="delete" action="remove" method="post"></form>
+    <form action="task" method="post">
+        <center>
+            <h3 class="cls">MY TO DO LIST</h3>
+            <div class="container2">
+                <input class="txt" type="text" name="work" placeholder="Add Task...">
+                <center><button class="btn">Add</button></center>
+                <input class="txt" type="text" name="lVal" form="delete" placeholder="Enter Task to remove...">
+                <center><button form="delete" class="btn">Remove</button></center>
+            </div>
+        </center>
+        <center>
+            <table class="table" border="1px" form="delete">
+                <thead>
                     <tr>
-                        <th>Date/Time</th>
-                        <th>Task</th>
-                        <th>Status</th>
+                        <!-- <th scope="col">Srno.</th> -->
+                        <th width="20%">Date</th>
+                        <th width="60%">Task</th>
+                        <th width="20%">status</th>
                     </tr>
-                    <% if(userData.length!=0){ var i=1; userData.forEach(function(data){ %>
+                </thead>
+                <tbody>
+                    <% if(data.length){ for(var i=0; i< data.length; i++) {%>
                         <tr>
+                            <!-- <th scope="row"><%= (i+1) %></th> -->
                             <td>
-                                <%=data.date %>
+                                <%= data[i].date%>
                             </td>
                             <td>
-                                <%=data.task %>
+                                <%= data[i].task%>
                             </td>
                             <td>
-                                <%=data.flag %>
+                                <%= data[i].flag%>
                             </td>
                         </tr>
-                        <% i++; }) %>
-                            <% } else{ %>
-                                <tr>
-                                    <td colspan="7">No Data Found</td>
-                                </tr>
-                                <% } %>
-                </table>
-            </center>
-        </form>
-    </body>
+                        <% } }else{ %>
+                            <tr>
+                                <td colspan="3">No user</td>
+                            </tr>
+                            <% } %>
+            </table>
+        </center>
+    </form>
+</body>
 
-    </html>
+</html>

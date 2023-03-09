@@ -1,9 +1,9 @@
-import express from 'express';
-import { toDoDetails, myList, displayData } from '../controllers/listController.js';
+import express from "express";
+import { removeList, toDoDetails } from "../controllers/listController.js";
 
 const listRouter = express.Router();
 
-listRouter.get('/list', myList);
-listRouter.post('/enter', toDoDetails, displayData);
+listRouter.post("/task", toDoDetails);
+listRouter.post("/remove", removeList);
 
 export default listRouter;

@@ -51,6 +51,9 @@
     transition: 0.3s;
     border-radius: 0;
 }
+.btn2{
+    float: right;
+}
 
 .cls {
     margin-top: 3%;
@@ -59,7 +62,10 @@
 .txt {
     width: 400px;
 }
-
+.table{
+    margin: 0 auto;
+    width: 60%;
+}
 input {
     padding: 10px 36px;
     margin: 5px;
