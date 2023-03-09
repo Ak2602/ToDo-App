@@ -1,0 +1,36 @@
+<%- include("header")-%>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <title>Registration Page</title>
+</head>
+
+<body>
+    <% if (messages.success) { %>
+        <p class="alert" style="background-color: green; font-size: larger;"><%- messages.success %></p>
+        <% } %>
+          <% if (messages.warn) { %>
+            <p class="alert" style="background-color: red; font-size: larger;"><%- messages.warn %></p>
+            <% } %>
+    <section class="login">
+        <form action="save" method="post">
+        <div class="container">
+                <h1>Registration Form</h1>
+                <label for="f_name" class="fl fontLabel">First name: </label>
+                <input type="text" name="f_name" placeholder="Firstname" required>
+                <label for="e_mail" class="fl fontLabel">E-mail: </label>
+                <input type="text" name="e_mail" placeholder="abc@abc.com" required>
+                <label for="pass" >Password: </label>
+                <input type="password" name="pass" placeholder="Password" required>
+                <input type="submit" value="SUBMIT" id="loginBtn" class="hover_btn">
+        </div>
+    </form>
+    </section>
+</body>
+
+</html>

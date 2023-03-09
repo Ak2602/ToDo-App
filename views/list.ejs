@@ -1,0 +1,49 @@
+<%- include("header")-%>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/style.css">
+        <title>TO Do List</title>
+    </head>
+
+    <body>
+        <form action="enter" method="post">
+            <center>
+                <h3 class="cls">MY TO DO LIST</h3>
+                <div class="container2">
+                    <input class="txt" type="text" name="work" placeholder="Enter here..." required>
+                    <center><button class="btn">Add</button></center>
+                </div>
+                <table border="1">
+                    <tr>
+                        <th>Date/Time</th>
+                        <th>Task</th>
+                        <th>Status</th>
+                    </tr>
+                    <% if(userData.length!=0){ var i=1; userData.forEach(function(data){ %>
+                        <tr>
+                            <td>
+                                <%=data.date %>
+                            </td>
+                            <td>
+                                <%=data.task %>
+                            </td>
+                            <td>
+                                <%=data.flag %>
+                            </td>
+                        </tr>
+                        <% i++; }) %>
+                            <% } else{ %>
+                                <tr>
+                                    <td colspan="7">No Data Found</td>
+                                </tr>
+                                <% } %>
+                </table>
+            </center>
+        </form>
+    </body>
+
+    </html>
