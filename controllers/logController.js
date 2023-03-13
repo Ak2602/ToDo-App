@@ -19,10 +19,16 @@ export const valLogin = (req, res) => {
         req.session.loggedin = true;
         req.session.name = name;
         req.flash("success", "Login Successfull");
-        let displayQuery = "SELECT * FROM to_do_details";
-        con.query(displayQuery, function (err, rows) {
+        let displayQuery = `SELECT * FROM to_do_details WHERE flag = "pending"`;
+        let display2Query = `SELECT * FROM to_do_details WHERE flag = "Completed"`;
+        con.query(displayQuery, function (err, row1) {
           if (err) throw err;
-          res.render("list", { data: rows });
+          const data = row1;
+          con.query(display2Query, function (err, row2) {
+            if (err) throw err;
+            const data2 = row2;
+            res.render("list", { data, data2 });
+          });
         });
       }
     });
