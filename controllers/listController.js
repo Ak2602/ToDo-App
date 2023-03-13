@@ -43,7 +43,7 @@ export const removeList = (req, res) => {
   con.query(deleteQuery, function (err, rows) {
     if (err) throw err;
     if (rows == 0) {
-      req.flash("warn", "Task does not exist..");
+      res.send("Task does not exist..");
     } else {
       let displayQuery = `SELECT * FROM to_do_details WHERE flag = "pending"`;
       let display2Query = `SELECT * FROM to_do_details WHERE flag = "Completed"`;
@@ -66,7 +66,7 @@ export const flagTask = (req, res) => {
   con.query(updateQuery, function (err, rows) {
     if (err) throw err;
     if (rows == 0) {
-      console.log("Task does not exist!!!");
+      res.send("Task does not exist!!!");
     } else {
       let displayQuery = `SELECT * FROM to_do_details WHERE flag = "pending"`;
       let display2Query = `SELECT * FROM to_do_details WHERE flag = "Completed"`;
